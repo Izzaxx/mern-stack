@@ -8,12 +8,12 @@ function NotesList() {
     const [notes, setNotes] = useState([])
 
     const getNotes = async () => {
-        const res = await axios.get('http://localhost:4000/api/notes');
+        const res = await axios.get('/api/notes');
         setNotes(res.data);
     }
 
     const deleteNote = async (id) => {
-        await axios.delete('http://localhost:4000/api/notes/' + id);
+        await axios.delete('/api/notes/' + id);
         getNotes();
     }
 

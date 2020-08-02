@@ -7,7 +7,7 @@ function CreateUser() {
     const [username, setUsername] = useState('');
 
     const axiosData = async () => {
-        const res = await axios.get('http://localhost:4000/api/users');
+        const res = await axios.get('/api/users');
         setUsers(res.data);
     }
 
@@ -17,7 +17,7 @@ function CreateUser() {
 
     const onSubmit = async e => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:4000/api/users', {
+        const res = await axios.post('/api/users', {
             username: username
         })
         setUsername('');
@@ -26,7 +26,7 @@ function CreateUser() {
     }
 
     const deleteUser = id => {
-        axios.delete('http://localhost:4000/api/users/' + id);
+        axios.delete('/api/users/' + id);
         axiosData();
         console.log(id)
     }

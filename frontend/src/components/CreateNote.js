@@ -18,7 +18,7 @@ function CreateNote(props) {
 
     // Methond
     const getUsers = async () => {
-        const res = await axios.get('http://localhost:4000/api/users')
+        const res = await axios.get('/api/users')
         setUsers(res.data.map(user => user.username));
         setDatos({
             ...datos,
@@ -35,9 +35,9 @@ function CreateNote(props) {
             author: datos.userSelected
         };
         if(editing) {
-            await axios.put('http://localhost:4000/api/notes/' + _id, newNote)
+            await axios.put('/api/notes/' + _id, newNote)
         } else {
-            await axios.post('http://localhost:4000/api/notes', newNote);
+            await axios.post('/api/notes', newNote);
         }
         window.location.href = '/';
     }
@@ -54,7 +54,7 @@ function CreateNote(props) {
     }
 
     const updateNotes = async () => {
-        const res = await axios.get('http://localhost:4000/api/notes/' + props.match.params.id);
+        const res = await axios.get('/api/notes/' + props.match.params.id);
         console.log(res);
         setDatos({
             title: res.data.title,
