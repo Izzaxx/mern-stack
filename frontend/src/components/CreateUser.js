@@ -7,7 +7,7 @@ function CreateUser() {
     const [username, setUsername] = useState('');
 
     const axiosData = async () => {
-        const res = await axios.get('/api/users');
+        const res = await axios.get('https://tasks-note.herokuapp.com/api/users');
         setUsers(res.data);
     }
 
@@ -17,7 +17,7 @@ function CreateUser() {
 
     const onSubmit = async e => {
         e.preventDefault();
-        const res = await axios.post('/api/users', {
+        const res = await axios.post('https://tasks-note.herokuapp.com/api/users', {
             username: username
         })
         setUsername('');
@@ -26,7 +26,7 @@ function CreateUser() {
     }
 
     const deleteUser = id => {
-        axios.delete('/api/users/' + id);
+        axios.delete('https://tasks-note.herokuapp.com/api/users/' + id);
         axiosData();
         console.log(id)
     }

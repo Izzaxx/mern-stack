@@ -8,12 +8,12 @@ function NotesList() {
     const [notes, setNotes] = useState([])
 
     const getNotes = async () => {
-        const res = await axios.get('/api/notes');
+        const res = await axios.get('https://tasks-note.herokuapp.com/api/notes');
         setNotes(res.data);
     }
 
     const deleteNote = async (id) => {
-        await axios.delete('/api/notes/' + id);
+        await axios.delete('https://tasks-note.herokuapp.com/api/notes/' + id);
         getNotes();
     }
 

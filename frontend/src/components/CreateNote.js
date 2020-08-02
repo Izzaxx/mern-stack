@@ -18,7 +18,7 @@ function CreateNote(props) {
 
     // Methond
     const getUsers = async () => {
-        const res = await axios.get('/api/users')
+        const res = await axios.get('https://tasks-note.herokuapp.com/api/users')
         setUsers(res.data.map(user => user.username));
         setDatos({
             ...datos,
@@ -35,9 +35,9 @@ function CreateNote(props) {
             author: datos.userSelected
         };
         if(editing) {
-            await axios.put('/api/notes/' + _id, newNote)
+            await axios.put('https://tasks-note.herokuapp.com/api/notes/' + _id, newNote)
         } else {
-            await axios.post('/api/notes', newNote);
+            await axios.post('https://tasks-note.herokuapp.com/api/notes', newNote);
         }
         window.location.href = '/';
     }
@@ -54,7 +54,7 @@ function CreateNote(props) {
     }
 
     const updateNotes = async () => {
-        const res = await axios.get('/api/notes/' + props.match.params.id);
+        const res = await axios.get('https://tasks-note.herokuapp.com/api/notes/' + props.match.params.id);
         console.log(res);
         setDatos({
             title: res.data.title,
